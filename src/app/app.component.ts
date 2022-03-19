@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {NavBarComponent} from '../app/components/nav-bar/nav-bar.component';
+import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'CODE-OVER-FLOW';
+  
+  
+  constructor(){
+    
+  }
+  
 }

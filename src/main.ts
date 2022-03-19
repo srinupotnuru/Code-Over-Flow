@@ -10,3 +10,9 @@ if (environment.production) {
 
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
+
+
+
+import 'codemirror/mode/clike/clike';
+import 'codemirror/mode/python/python';
+import 'codemirror/mode/javascript/javascript';

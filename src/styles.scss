@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'assets/styles/theme.scss';
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/material';
+@import '~codemirror/theme/tomorrow-night-bright';
+@import '~codemirror/theme/the-matrix';
+@import '~codemirror/theme/ssms';
+@import '~codemirror/theme/solarized';
+@import '~codemirror/theme/shadowfox';
+@import '~codemirror/theme/seti';
+@import '~codemirror/theme/tomorrow-night-eighties';
+@import '~codemirror/theme/ttcn.css';
+@import '~codemirror/theme/twilight';
+@import '~codemirror/theme/vibrant-ink';
+@import '~codemirror/theme/xq-dark';
+@import '~codemirror/theme/xq-light';
+@import '~codemirror/theme/yeti';
+@import '~codemirror/theme/zenburn';
+@import '~codemirror/theme/icecoder';
+@import '~codemirror/theme/isotope';
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #C6D2ED;}

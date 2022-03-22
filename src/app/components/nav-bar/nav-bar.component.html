@@ -1,16 +1,17 @@
 
 <header class="page-header">
     <div class="page-header__top">
-      <div class='page-header__logo'>LOGO</div>
+      <div class='logo'> <span class="red-tag">&lt;</span> Code OverFlow <span class="red-tag">/&gt;</span></div>
       <div class="page-header__toggle" (click)="toggleNavbar()">☰</div>
     </div>
     <nav class="page-header__bottom">
       <ul id="navigation" class="navigation">
         <li class="navigation__item">Home</li>
-        <a routerLink="code"><li class="navigation__item">Code</li></a>
-        <li class="navigation__item">Portfolio</li>
-        <li class="navigation__item">Blog</li>
-        <li class="navigation__item">Contact</li>
+        <li routerLink="code" class="navigation__item">Code</li>
+        <li class="navigation__item">Contribute</li>
+        <li class="navigation__item">Approve</li>
+        <li class="navigation__item signIn">SignIn</li>
+        <li class="navigation__item signUp">SignUp</li>
       </ul>
     </nav>
   </header>

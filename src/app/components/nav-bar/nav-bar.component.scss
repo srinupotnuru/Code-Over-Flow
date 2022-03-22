@@ -1,5 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@500&family=Roboto:wght@300;400&display=swap');
 .page-header {
-
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -11,11 +12,6 @@
     width: 100%;
     line-height: 40px;
     display: flex;
-    align-items: center;
-    a{
-        color: #fff;
-        text-decoration: none;
-    }
     &__top {
       display: flex;
       justify-content: space-between;
@@ -28,8 +24,37 @@
       right: 10px;
       top: 10px;
     }
+    li{
+      font-family: 'Fredoka', sans-serif;
+      font-weight: 500;
+      color: white;
+    }
+    li:hover{
+      padding-left:16px;
+      padding-right: 16px;
+      padding-bottom: 0px;
+      border-bottom:2px solid red ;
+      padding-bottom: 0px;
+    }
+    .signIn{
+      background-color: green;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    .signUp{
+      background-color: red;
+      border-radius: 10px;
+      margin: 5px;
+    }
+    .logo{
+      font-size: 2em;
+      font-family: 'Fredoka', sans-serif;
+    }
+    .red-tag{
+      color: red;
+    }
     z-index: 999;
-    border-bottom: 1px solid grey;
+    border-bottom: 1px thin grey;
   }
   
   .navigation {
@@ -39,7 +64,9 @@
     transition: .7s;
     
     &__item {
-      padding: 0 16px;
+      padding-left:16px;
+      padding-right: 16px;
+      padding-bottom: 0px;
     }
     
     &--visible { 

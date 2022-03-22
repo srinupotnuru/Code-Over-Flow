@@ -1,28 +1,35 @@
 <div class="compilerWrapper">
   <div class="compiler">
     <div class="editor-options">
-      <mat-form-field appearance="fill" class="mr-2 mb-2">
+      <!-- <mat-form-field appearance="fill" class="mr-2 mb-2">
         <mat-label>Language</mat-label>
         <mat-select disableRipple [(ngModel)]="mode" (ngModelChange)="changeMode()">
-          <mat-option value="markdown">Markdown</mat-option>
-          <mat-option value="text/typescript">TypeScript</mat-option>
-          <mat-option value="python">Python</mat-option>
+          <mat-option *ngFor="let mode of modes" value={{mode.value}}>{{mode.name}}</mat-option>
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
+      <select [(ngModel)]="mode" (ngModelChange)="changeMode()">
+        <option *ngFor="let mode of modes" value={{mode.value}}>{{mode.name}}</option>
+      </select>
 
-      <mat-form-field appearance="fill">
+      <div class="run-btn">
+        <mat-icon style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
+        <span>Run</span>
+
+      </div>
+
+      <select [(ngModel)]="theme" (ngModelChange)="changeTheme()">
+        <option *ngFor="let theme of themeList" value={{theme.value}}>{{theme.name}}</option>
+      </select>
+      <!-- <mat-form-field appearance="fill">
         <mat-label>Theme</mat-label>
         <mat-select disableRipple [(ngModel)]="theme" (ngModelChange)="changeTheme()">
           <mat-option *ngFor="let theme of themeList" value={{theme.value}}>{{theme.name}}</mat-option>
-          <!-- <mat-option value="material">material</mat-option>
-          <mat-option value="icecoder">icecoder</mat-option> -->
         </mat-select>
-      </mat-form-field>
+      </mat-form-field> -->
 
     </div>
-    <div class="ngx-codemirror codeMirror">
+    <div class="codeMirror">
       <ngx-codemirror
-        class=""
         [options]="codeMirrorOptions"
         [ngModel]="code"
         [autoFocus]="true"
@@ -30,5 +37,11 @@
       ></ngx-codemirror>
     </div>
     
+  </div>
+  <div class="console">
+    <h2>Input</h2>
+    <textarea name="" id=""  cols="50" rows="8"></textarea>
+    <h2>Output</h2>
+    <textarea name="" id=""  cols="50" rows="8" readonly></textarea>
   </div>
 </div>

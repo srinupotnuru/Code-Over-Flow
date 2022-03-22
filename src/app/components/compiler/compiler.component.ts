@@ -264,8 +264,8 @@ export class CompilerComponent implements OnInit {
       clientId: "b4d6d069cdf55120c81c4eda72b5312d",
       clientSecret: "86e7cd0feb8c0ba1cfcf769ede27985a80d8bd66005bdf488255903fd0b6efc5"
     };
-    this.compilerService.compile(program).subscribe(res => {
-      console.log(res);
-    })
+    // this.compilerService.compile(program).subscribe(res => {
+    //   console.log(res);
+    // })
   }
 }

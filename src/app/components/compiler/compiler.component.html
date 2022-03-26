@@ -31,7 +31,7 @@
     <div class="codeMirror">
       <ngx-codemirror
         [options]="codeMirrorOptions"
-        [ngModel]="code"
+        [(ngModel)]="code"
         [autoFocus]="true"
         (ngModelChange)="handleChange($event)"
       ></ngx-codemirror>

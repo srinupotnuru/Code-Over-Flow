@@ -16,6 +16,7 @@ import { CompilerComponent } from './components/compiler/compiler.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
+import { SignInComponent } from './components/sign-in/sign-in.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { LoginComponent } from './components/login/login.component';
     AppComponent,
     NavBarComponent,
     CompilerComponent,
-    LoginComponent
+    LoginComponent,
+    SignInComponent
   ],
   imports: [
     BrowserModule,

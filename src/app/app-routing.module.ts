@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'code', component: CompilerComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'sign', loadChildren: () => import('./sign/sign.module').then(m => m.SignModule) },
 ];
 
 @NgModule({

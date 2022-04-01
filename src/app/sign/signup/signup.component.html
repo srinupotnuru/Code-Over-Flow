@@ -1,0 +1,40 @@
+<div class="loginWrapper">
+
+    <div class="login hide_scrollbar">
+
+        <form [formGroup]="signupform" (ngSubmit)="onSubmit()" >
+
+
+            <input formControlName="email"  type="text" placeholder = "Enter your Email Id" required/>
+           <p class="error" *ngIf="email?.touched && !email?.valid">*Invalid email</p>
+           <span style="color:rgba(46, 10, 207, 0.719); font-size:8px; text-decoration: underline;" (click)="sendOtp()" *ngIf="email?.touched && email?.valid && !otpSent">send Otp</span>
+        
+            <input formControlName="firstname" type="text" placeholder = "Enter your first name" required/>
+            <p class="error" *ngIf="firstname?.touched && !firstname?.valid">*Invalid firstname</p>
+
+            <input formControlName="lastname" type="text" placeholder = "Enter your last name" required/>
+            <p class="error" *ngIf="lastname?.touched && !lastname?.valid">*Invalid lastname</p>
+
+        
+            <input formControlName="phonenumber" type="number" placeholder = "Enter your phone number" required/>
+            <p class="error" *ngIf="phonenumber?.touched && !phonenumber?.valid">*Invalid phonenumber</p>
+
+           
+            <input formControlName="regdnumber" type="number" placeholder = "Enter your regd number" required/>
+            <p class="error" *ngIf="regdnumber?.touched && !regdnumber?.valid">*Invalid regdnumber</p>
+
+           
+            <input formControlName="password" type="password" placeholder = "Enter your password" required/>
+            <p class="error" *ngIf="password?.touched && !password?.valid">*Invalid password</p>
+
+            <input formControlName="otp" type="text"  placeholder = "Enter OTP" *ngIf='otpSent' required/>
+            <p class="error" *ngIf="otp?.touched && !otp?.valid">*Invalid Otp</p>
+
+
+             <button type="submit" style="padding:8px; margin:auto; width:100%; color:white; background-color:rgb(54, 124, 190);">Submit</button>
+        </form>
+
+
+    </div>
+
+</div>

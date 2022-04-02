@@ -1,1 +1,21 @@
-<p>signin works!</p>
+<div class="loginWrapper">
+
+    <div class="login hide_scrollbar">
+
+        <form [formGroup]="signInForm" (ngSubmit)="onSubmit()" >
+
+           
+            <input formControlName="regdnumber" type="number" placeholder = "Enter your regd number" required/>
+            <p class="error" *ngIf="regdnumber?.touched && !regdnumber?.valid">*Invalid regdnumber</p>
+
+           
+            <input formControlName="password" type="password" placeholder = "Enter your password" required/>
+            <p class="error" *ngIf="password?.touched && !password?.valid">*Invalid password</p>
+
+            <button type="submit" style="padding:8px; margin:auto; width:100%; color:white; background-color:rgb(54, 124, 190);">Submit</button>
+        </form>
+
+
+    </div>
+
+</div>

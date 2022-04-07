@@ -22,6 +22,17 @@ export class CompilerComponent implements OnInit {
   language: string = 'clike';
   mode:string = 'cpp';
   theme: string = 'dracula';
+  customInput !: string;
+  output !: string;
+  loading: boolean = false;
+  languageCodes = {
+    "python" : 71,
+    "cpp" : 14,
+    "javascript" : 63,
+    "c" : 48,
+
+
+  }
   themeList = [
     { value: '3024-day', name: '3024-day' },
     { value: '3024-night', name: '3024-night' },
@@ -251,21 +262,55 @@ export class CompilerComponent implements OnInit {
   }
 
   constructor(private compilerService: CompilerService) {
-    this.compile();
    }
 
   ngOnInit(): void {
   }
   compile() {
-    var program = {
-      script: "print('hello')",
-      language: "python",
-      versionIndex: "0",
-      clientId: "b4d6d069cdf55120c81c4eda72b5312d",
-      clientSecret: "86e7cd0feb8c0ba1cfcf769ede27985a80d8bd66005bdf488255903fd0b6efc5"
+    if(this.loading)
+      return;
+    if(this.code.length == 0)
+    {
+      alert("Please enter some code");
+      return ;
+    }
+    this.loading = true;
+    this.output = "";
+    console.log("come")
+    console.log(this.mode)
+    let compileData :any= {
+      source_code : btoa(this.code)
     };
-    // this.compilerService.compile(program).subscribe(res => {
-    //   console.log(res);
-    // })
+    switch(this.mode) { 
+      case "cpp": { 
+        compileData.language_id = 54; 
+         break; 
+      } 
+      case "python": { 
+        compileData.language_id = 71; 
+         break; 
+      } 
+      case "javascript": { 
+        compileData.language_id = 63; 
+         break; 
+      } 
+      case "c": { 
+        compileData.language_id = 48; 
+         break; 
+      }  
+   } 
+
+    this.compilerService.compile(compileData).subscribe(res=>{
+      console.log(res)
+      this.loading = false;
+      if(res.data.stdout)
+        this.output = res.data.stdout;
+      else if(res.data.stderr)
+        this.output = res.data.stderr;
+      else if(res.data.compile_output)
+      this.output = res.data.compile_output;
+      console.log(res.data);
+    })
+    
   }
 }

@@ -11,9 +11,10 @@
         <option *ngFor="let mode of modes" value={{mode.value}}>{{mode.name}}</option>
       </select>
 
-      <div class="run-btn">
-        <mat-icon style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
-        <span>Run</span>
+      <div class="run-btn" (click)="compile()">
+        <mat-icon *ngIf="!loading" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
+        <span *ngIf="!loading">Run</span>
+        <div class="loader" *ngIf="loading"></div>
 
       </div>
 
@@ -31,7 +32,7 @@
     <div class="codeMirror">
       <ngx-codemirror
         [options]="codeMirrorOptions"
-        [ngModel]="code"
+        [(ngModel)]="code"
         [autoFocus]="true"
         (ngModelChange)="handleChange($event)"
       ></ngx-codemirror>
@@ -40,8 +41,8 @@
   </div>
   <div class="console">
     <h2>Input</h2>
-    <textarea name="" id=""  cols="50" rows="8"></textarea>
+    <textarea name="" id=""  cols="50" rows="8" [(ngModel)]="customInput" ></textarea>
     <h2>Output</h2>
-    <textarea name="" id=""  cols="50" rows="8" readonly></textarea>
+    <textarea name="" id=""  cols="50" rows="8" readonly [(ngModel)]="output"></textarea>
   </div>
 </div>

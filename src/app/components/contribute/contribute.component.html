@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="form-wrapper">
+        <div class="row">
+            <mat-form-field appearance="fill" >
+                <mat-label>Problem Name</mat-label>
+                <input matInput>
+            </mat-form-field>
+
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill" >
+                <mat-label>Description</mat-label>
+                <textarea matInput rows="15"></textarea>
+            </mat-form-field>
+        </div>
+        <div class="row" *ngFor="let i of numberOfTestCases">
+            <mat-form-field appearance="fill" style="width: 50%;" >
+                <mat-label>Input</mat-label>
+                <input matInput>
+            </mat-form-field>
+            <mat-form-field appearance="fill" style="width: 50%;">
+                <mat-label>Output</mat-label>
+                <input matInput>
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field class="example-chip-list" appearance="fill">
+                <mat-label>Tags</mat-label>
+                <mat-chip-list #chipList aria-label="Fruit selection">
+                  <mat-chip *ngFor="let fruit of tags" (removed)="remove(fruit)">
+                    {{fruit.name}}
+                    <button matChipRemove>
+                      <mat-icon>cancel</mat-icon>
+                    </button>
+                  </mat-chip>
+                  <input placeholder="Enter Tags..."
+                         [matChipInputFor]="chipList"
+                         [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                         [matChipInputAddOnBlur]="addOnBlur"
+                         (matChipInputTokenEnd)="add($event)">
+                </mat-chip-list>
+              </mat-form-field>
+        </div>
+        <div class="row d-flex justify-content-center">
+            <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addTestCase()">
+                <mat-icon>add</mat-icon>
+              </button>
+        </div>
+          
+    </div>
+</div>

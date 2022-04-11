@@ -9,13 +9,17 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
+import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {ReactiveFormsModule , FormsModule} from '@angular/forms';
+import {MatChipsModule} from '@angular/material/chips'
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { CompilerComponent } from './components/compiler/compiler.component';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
+import { ContributeComponent } from './components/contribute/contribute.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 @NgModule({
@@ -23,7 +27,9 @@ import { LoginComponent } from './components/login/login.component';
     AppComponent,
     NavBarComponent,
     CompilerComponent,
-    LoginComponent
+    LoginComponent,
+    ContributeComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +44,9 @@ import { LoginComponent } from './components/login/login.component';
     ReactiveFormsModule,
     MatSelectModule,
     HttpClientModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatInputModule,
+    MatChipsModule
     
     
   ],

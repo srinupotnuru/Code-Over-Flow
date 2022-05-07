@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CompilerService } from 'src/services/compiler.service';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { TestCaseResultsComponent } from './test-case-results/test-case-results.component'
 const defaults = {
   markdown:
     '# Heading\n\nSome **bold** and _italic_ text\nBy [Scott Cooper](https://github.com/scttcper)',
@@ -241,21 +243,17 @@ export class QuestionPreviewComponent implements OnInit {
       ...this.codeMirrorOptions,
       mode: this.mode,
     };
-    console.log(this.codeMirrorOptions)
   }
   changeTheme():void{
     this.codeMirrorOptions = {
       ...this.codeMirrorOptions,
       theme: this.theme,
     };
-    console.log(this.codeMirrorOptions)
   }
   handleChange($event: Event): void {
-    console.log('ngModelChange', $event);
   }
 
   setEditorContent(event:any) {
-    console.log(this.code);
   }
 
   compile() {
@@ -268,8 +266,7 @@ export class QuestionPreviewComponent implements OnInit {
     }
     this.loading = true;
     this.output = "";
-    console.log("come")
-    console.log(this.mode)
+
     let compileData :any= {
       source_code : btoa(this.code)
     };
@@ -295,7 +292,6 @@ export class QuestionPreviewComponent implements OnInit {
    } 
 
     this.compilerService.compile(compileData).subscribe(res=>{
-      console.log(res)
       this.loading = false;
       if(res.data.stdout)
         this.output = atob(res.data.stdout);
@@ -306,9 +302,20 @@ export class QuestionPreviewComponent implements OnInit {
     })
     
   }
-  constructor(private compilerService:CompilerService) { }
+  constructor(private compilerService:CompilerService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TestCaseResultsComponent, {
+      width: '500px',
+      height:'500px',
+      data: {name: ""},
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      console.log('The dialog was closed');
+    });
+  }
 }

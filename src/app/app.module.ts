@@ -23,7 +23,8 @@ import { HomeComponent } from './components/home/home.component';
 import { MatTableModule } from '@angular/material/table';
 import { QuestionPreviewComponent } from './components/home/question-preview/question-preview.component';
 import { AngularSplitModule } from 'angular-split';
-
+import { TestCaseResultsComponent } from './components/home/question-preview/test-case-results/test-case-results.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AngularSplitModule } from 'angular-split';
     LoginComponent,
     ContributeComponent,
     HomeComponent,
-    QuestionPreviewComponent
+    QuestionPreviewComponent,
+    TestCaseResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +55,8 @@ import { AngularSplitModule } from 'angular-split';
     MatChipsModule,
     MatTableModule,
     AngularSplitModule,
+    MatDialogModule
+    
     
     
   ],

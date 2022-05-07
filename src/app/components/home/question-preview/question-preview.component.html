@@ -26,7 +26,11 @@
                   <mat-icon *ngIf="!loading" (click)="compile()" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
                   <span *ngIf="!loading">Run</span>
                   <div class="loader" *ngIf="loading"></div>
-          
+                </div>
+
+                <div class="run-btn" >
+                  <mat-icon  (click)="openDialog()" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
+                  <span >Submit</span>
                 </div>
           
                 <select [(ngModel)]="theme" (ngModelChange)="changeTheme()">

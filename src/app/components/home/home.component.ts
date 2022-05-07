@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { QuestionService } from '../../../services/question.service'
+import { Router } from '@angular/router';
 export interface PeriodicElement {
   name: string;
   position: number;
@@ -29,7 +30,7 @@ export class HomeComponent implements OnInit {
   displayedColumns: string[] = ['name','difficulty'];
   dataSource = ELEMENT_DATA;
   questions = [];
-  constructor(private questionService:QuestionService) { }
+  constructor(private questionService:QuestionService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -38,5 +39,11 @@ export class HomeComponent implements OnInit {
     })
   }
 
+
+  openPreview(id:string)
+  {
+    console.log(id)
+    this.router.navigate(['/home/question', { _id:id }]);
+  }
 
 }

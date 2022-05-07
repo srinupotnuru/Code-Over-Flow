@@ -9,6 +9,8 @@ export class NavBarComponent implements OnInit {
 
   constructor(private router: Router) { }
 
+  public user:any = JSON.parse(sessionStorage.getItem('user') as string);
+
   ngOnInit(): void {
   }
   toggleNavbar(){

@@ -32,11 +32,11 @@
         <div class="row" *ngFor="let i of numberOfTestCases; let ind = index">
             <mat-form-field appearance="fill" style="width: 50%;" >
                 <mat-label>Input</mat-label>
-                <input matInput [(ngModel)]="inputs[ind]">
+                <textarea matInput rows="4" [(ngModel)]="inputs[ind]"></textarea>
             </mat-form-field>
             <mat-form-field appearance="fill" style="width: 50%;">
                 <mat-label>Output</mat-label>
-                <input matInput [(ngModel)]="outputs[ind]">
+                <textarea matInput rows="4" [(ngModel)]="outputs[ind]"></textarea>
             </mat-form-field>
         </div>
         <div class="row">

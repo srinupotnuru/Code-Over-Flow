@@ -2,9 +2,9 @@
     <as-split direction="horizontal">
       <as-split-area [size]="40" useTransition="true">
         <div class="questionWrapper p-2">
-            <h2>Gold Rush</h2>
+            <h2>{{question.name}}</h2>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum, quos. Sunt reprehenderit delectus sapiente pariatur repellat! Dolorum, sit, eaque distinctio repudiandae, nobis ipsam excepturi sunt corporis facilis reiciendis doloribus aspernatur aliquam omnis similique reprehenderit animi architecto eligendi quisquam commodi odio voluptas? Repudiandae corrupti illo nisi dolore, vel veniam non sint placeat tenetur, nostrum beatae ea inventore amet ab blanditiis distinctio maxime! Consectetur nisi quisquam, eum ad fugit possimus doloribus exercitationem minima quae, quaerat commodi. Error atque laborum ducimus deserunt adipisci ipsam facilis ipsum explicabo accusamus, porro quae impedit nisi consectetur esse quo sapiente eaque, quod minima blanditiis numquam! At molestiae modi, ipsum earum asperiores velit officiis sit esse, itaque explicabo inventore, vero soluta dolores officia? Veritatis consectetur quo atque exercitationem, eos accusamus vero necessitatibus odit? Alias doloribus obcaecati animi eligendi reiciendis, asperiores, omnis ex autem tenetur ut corrupti ab, commodi perspiciatis incidunt ipsa non quasi. Repellendus, adipisci! Exercitationem facere necessitatibus deserunt, non unde sapiente voluptatem adipisci dolores provident distinctio aliquid veritatis minima, reprehenderit cum minus earum rerum eaque ab sunt! Minus et voluptate consectetur velit mollitia commodi vitae rerum quibusdam quaerat, odio itaque ducimus aliquam dolores laudantium dignissimos numquam deleniti? Expedita esse rem eos deleniti ratione. Ea accusantium rem similique enim a. Velit alias quidem soluta dolores itaque at, nihil culpa eveniet repellat, a nesciunt. Repellat consectetur atque, odio iure suscipit libero voluptatem corrupti quisquam laborum! Qui nesciunt nihil deleniti fugit. Aliquam quasi placeat ex aliquid commodi reprehenderit, maiores est molestias praesentium sed dolorem atque, quidem sapiente officia quisquam facilis culpa, delectus quo enim consequuntur vitae perferendis! Veniam laudantium debitis voluptatem aut facere deserunt sequi, voluptatibus, possimus sunt, eveniet fugiat sint! Assumenda similique nostrum natus perferendis fuga dolorem repellendus. Esse amet suscipit eos dignissimos animi architecto doloremque maiores commodi delectus expedita molestias veritatis sunt minus dolorum adipisci labore culpa voluptates deleniti dicta dolores autem quibusdam, sit consequuntur assumenda. Laudantium voluptatum culpa excepturi provident ab omnis animi delectus nulla eum cupiditate sint iusto voluptatibus quos iure pariatur exercitationem incidunt, voluptatem aliquam nesciunt dicta quaerat. Blanditiis eligendi excepturi dolore suscipit quo voluptatibus! Temporibus saepe assumenda quasi quam recusandae, distinctio repellendus quia iste neque est possimus eos, praesentium obcaecati aliquam beatae architecto veritatis nisi minima animi quibusdam quae! Quidem nisi, libero dolorem voluptatem quas veritatis facilis? Repellendus quod eius explicabo consequuntur necessitatibus sint quam voluptates ea, quisquam numquam eligendi, ipsum, tenetur eveniet! Quae pariatur maiores magni ea temporibus beatae facilis dolorum placeat cum!
+                {{question.question}}
             </p>
         </div>
       </as-split-area>
@@ -22,15 +22,17 @@
                   <option *ngFor="let mode of modes" value={{mode.value}}>{{mode.name}}</option>
                 </select>
           
-                <div class="run-btn" >
-                  <mat-icon *ngIf="!loading" (click)="compile()" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
-                  <span *ngIf="!loading">Run</span>
-                  <div class="loader" *ngIf="loading"></div>
-                </div>
-
-                <div class="run-btn" >
-                  <mat-icon  (click)="openDialog()" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
-                  <span >Submit</span>
+                <div class="test-buttons" style="display: flex; flex-direction: row;">
+                  <div class="run-btn mr-2" >
+                    <mat-icon *ngIf="!loading" (click)="compile()" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon>
+                    <span *ngIf="!loading">Run</span>
+                    <div class="loader" *ngIf="loading"></div>
+                  </div>
+  
+                  <div class="run-btn" style="background-color: #2f89fc;" (click)="openDialog()">
+                    <!-- <mat-icon  (click)="openDialog()" style="color: #6CD97E;" aria-hidden="false" aria-label="Example home icon">play_arrow</mat-icon> -->
+                    <span style="color: white;">Submit</span>
+                  </div>
                 </div>
           
                 <select [(ngModel)]="theme" (ngModelChange)="changeTheme()">

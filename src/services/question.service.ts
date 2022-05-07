@@ -25,8 +25,15 @@ export class QuestionService extends BaseService {
         return this.post(`${this.apiUrl}/question`, data); 
     }
 
+    getQuestion(id:string):Observable<any>{
+        return this.get(`${this.apiUrl}/get-question/`+id);
+    }
+
     getAllQuestions():Observable<any>{
         return this.get(`${this.apiUrl}/get-questions`);
+    }
+    getTestCaseResults(id:string,compileData:any):Observable<any>{
+        return this.get(`${this.apiUrl}/test-case-results/`+id,compileData);
     }
 
 }

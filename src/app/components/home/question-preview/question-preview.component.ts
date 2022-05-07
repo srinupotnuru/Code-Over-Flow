@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CompilerService } from 'src/services/compiler.service';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { TestCaseResultsComponent } from './test-case-results/test-case-results.component'
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TestCaseResultsComponent } from './test-case-results/test-case-results.component';
+import { ActivatedRoute } from '@angular/router';
+import { QuestionService } from '../../../../services/question.service';
 const defaults = {
   markdown:
     '# Heading\n\nSome **bold** and _italic_ text\nBy [Scott Cooper](https://github.com/scttcper)',
@@ -26,6 +28,14 @@ export class QuestionPreviewComponent implements OnInit {
   customInput !: string;
   output !: string;
   loading: boolean = false;
+  question:any = {
+    name: '',
+    question: '',
+    tags: [],
+    inputs: [],
+    outputs: [],
+    difficulty: '',
+  };
   languageCodes = {
     "python" : 71,
     "cpp" : 14,
@@ -100,129 +110,10 @@ export class QuestionPreviewComponent implements OnInit {
     { value: 'zenburn', name: 'zenburn' },
   ]
   modes = [
-    { name: 'apl', value: 'apl' },
-    { name: 'asciiarmor', value: 'asciiarmor' },
-    { name: 'asn.1', value: 'asn.1' },
-    { name: 'asterisk', value: 'asterisk' },
-    { name: 'brainfuck', value: 'brainfuck' },
     { name: 'c', value: 'c' },
     { name: 'c++', value: 'cpp'},
-    { name: 'clojure', value: 'clojure' },
-    { name: 'cmake', value: 'cmake' },
-    { name: 'cobol', value: 'cobol' },
-    { name: 'coffeescript', value: 'coffeescript' },
-    { name: 'commonlisp', value: 'commonlisp' },
-    { name: 'crystal', value: 'crystal' },
-    { name: 'css', value: 'css' },
-    { name: 'cypher', value: 'cypher' },
-    { name: 'd', value: 'd' },
-    { name: 'dart', value: 'dart' },
-    { name: 'diff', value: 'diff' },
-    { name: 'django', value: 'django' },
-    { name: 'dockerfile', value: 'dockerfile' },
-    { name: 'dtd', value: 'dtd' },
-    { name: 'dylan', value: 'dylan' },
-    { name: 'ebnf', value: 'ebnf' },
-    { name: 'ecl', value: 'ecl' },
-    { name: 'eiffel', value: 'eiffel' },
-    { name: 'elm', value: 'elm' },
-    { name: 'erlang', value: 'erlang' },
-    { name: 'factor', value: 'factor' },
-    { name: 'fcl', value: 'fcl' },
-    { name: 'forth', value: 'forth' },
-    { name: 'fortran', value: 'fortran' },
-    { name: 'gas', value: 'gas' },
-    { name: 'gfm', value: 'gfm' },
-    { name: 'gherkin', value: 'gherkin' },
-    { name: 'go', value: 'go' },
-    { name: 'groovy', value: 'groovy' },
-    { name: 'haml', value: 'haml' },
-    { name: 'handlebars', value: 'handlebars' },
-    { name: 'haskell', value: 'haskell' },
-    { name: 'haskell-literate', value: 'haskell-literate' },
-    { name: 'haxe', value: 'haxe' },
-    { name: 'htmlembedded', value: 'htmlembedded' },
-    { name: 'htmlmixed', value: 'htmlmixed' },
-    { name: 'http', value: 'http' },
-    { name: 'idl', value: 'idl' },
-    { name: 'javascript', value: 'javascript' },
-    { name: 'jinja2', value: 'jinja2' },
-    { name: 'jsx', value: 'jsx' },
-    { name: 'julia', value: 'julia' },
-    { name: 'livescript', value: 'livescript' },
-    { name: 'lua', value: 'lua' },
-    { name: 'markdown', value: 'markdown' },
-    { name: 'mathematica', value: 'mathematica' },
-    { name: 'mbox', value: 'mbox' },
-    { name: 'meta.js', value: 'meta.js' },
-    { name: 'mirc', value: 'mirc' },
-    { name: 'mllike', value: 'mllike' },
-    { name: 'modelica', value: 'modelica' },
-    { name: 'mscgen', value: 'mscgen' },
-    { name: 'mumps', value: 'mumps' },
-    { name: 'nginx', value: 'nginx' },
-    { name: 'nsis', value: 'nsis' },
-    { name: 'ntriples', value: 'ntriples' },
-    { name: 'octave', value: 'octave' },
-    { name: 'oz', value: 'oz' },
-    { name: 'pascal', value: 'pascal' },
-    { name: 'pegjs', value: 'pegjs' },
-    { name: 'perl', value: 'perl' },
-    { name: 'php', value: 'php' },
-    { name: 'pig', value: 'pig' },
-    { name: 'powershell', value: 'powershell' },
-    { name: 'properties', value: 'properties' },
-    { name: 'protobuf', value: 'protobuf' },
-    { name: 'pug', value: 'pug' },
-    { name: 'puppet', value: 'puppet' },
     { name: 'python', value: 'python' },
-    { name: 'q', value: 'q' },
-    { name: 'r', value: 'r' },
-    { name: 'rpm', value: 'rpm' },
-    { name: 'rst', value: 'rst' },
-    { name: 'ruby', value: 'ruby' },
-    { name: 'rust', value: 'rust' },
-    { name: 'sas', value: 'sas' },
-    { name: 'sass', value: 'sass' },
-    { name: 'scheme', value: 'scheme' },
-    { name: 'shell', value: 'shell' },
-    { name: 'sieve', value: 'sieve' },
-    { name: 'slim', value: 'slim' },
-    { name: 'smalltalk', value: 'smalltalk' },
-    { name: 'smarty', value: 'smarty' },
-    { name: 'solr', value: 'solr' },
-    { name: 'soy', value: 'soy' },
-    { name: 'sparql', value: 'sparql' },
-    { name: 'spreadsheet', value: 'spreadsheet' },
-    { name: 'sql', value: 'sql' },
-    { name: 'stex', value: 'stex' },
-    { name: 'stylus', value: 'stylus' },
-    { name: 'swift', value: 'swift' },
-    { name: 'tcl', value: 'tcl' },
-    { name: 'textile', value: 'textile' },
-    { name: 'tiddlywiki', value: 'tiddlywiki' },
-    { name: 'tiki', value: 'tiki' },
-    { name: 'toml', value: 'toml' },
-    { name: 'tornado', value: 'tornado' },
-    { name: 'troff', value: 'troff' },
-    { name: 'ttcn', value: 'ttcn' },
-    { name: 'ttcn-cfg', value: 'ttcn-cfg' },
-    { name: 'turtle', value: 'turtle' },
-    { name: 'twig', value: 'twig' },
-    { name: 'vb', value: 'vb' },
-    { name: 'vbscript', value: 'vbscript' },
-    { name: 'velocity', value: 'velocity' },
-    { name: 'verilog', value: 'verilog' },
-    { name: 'vhdl', value: 'vhdl' },
-    { name: 'vue', value: 'vue' },
-    { name: 'wast', value: 'wast' },
-    { name: 'webidl', value: 'webidl' },
-    { name: 'xml', value: 'xml' },
-    { name: 'xquery', value: 'xquery' },
-    { name: 'yacas', value: 'yacas' },
-    { name: 'yaml', value: 'yaml' },
-    { name: 'yaml-frontmatter', value: 'yaml-frontmatter' },
-    { name: 'z80', value: 'z80' },
+    { name: 'javascript', value: 'javascript' },
   ]
   codeMirrorOptions: any = {
     theme: 'nord',
@@ -302,16 +193,43 @@ export class QuestionPreviewComponent implements OnInit {
     })
     
   }
-  constructor(private compilerService:CompilerService, public dialog: MatDialog) { }
+  constructor(private compilerService:CompilerService, public dialog: MatDialog, private route:ActivatedRoute, private questionService:QuestionService) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(params => {
+      this.questionService.getQuestion((params as any)._id).subscribe(res=>{
+        this.question = res.data;
+      })
+    })
   }
 
   openDialog(): void {
+    let compileData :any= {
+      source_code : btoa(this.code)
+    };
+    if(this.customInput)
+    compileData.stdin = btoa(this.customInput);
+    switch(this.mode) { 
+      case "cpp": { 
+        compileData.language_id = 54; 
+         break; 
+      } 
+      case "python": { 
+        compileData.language_id = 71; 
+         break; 
+      } 
+      case "javascript": { 
+        compileData.language_id = 63; 
+         break; 
+      } 
+      case "c": { 
+        compileData.language_id = 48; 
+         break; 
+      }  
+   } 
     const dialogRef = this.dialog.open(TestCaseResultsComponent, {
       width: '500px',
-      height:'500px',
-      data: {name: ""},
+      data: {id:this.question._id,compileData},
     });
 
     dialogRef.afterClosed().subscribe(() => {

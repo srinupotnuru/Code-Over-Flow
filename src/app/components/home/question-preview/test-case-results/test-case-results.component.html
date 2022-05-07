@@ -1,1 +1,21 @@
-<p>test-case-results works!</p>
+<div class="loading" *ngIf="loading" style="display: flex;flex-direction: column;justify-content: center;align-items: center;">
+    <div class="loading-message">
+        <span class="mr-1" style="display: flex;flex-direction: row; align-items: center;"><span>Hold on...We are fetching the results</span><div class="loader"></div></span>
+    </div>
+    <img width="300px" height="300px" src="../../../../../assets/icons//waiting.gif" alt="">
+</div>
+<div class="test-case-table" *ngIf="!loading">
+    <div class="headers row">
+        <div class="col-3 center-flex">Input</div>
+        <div class="col-3 center-flex">Status</div>
+        <div class="col-3 center-flex">Time(sec)</div>
+        <div class="col-3 center-flex">Memory(KiB</div>
+    </div>
+    <div class="test-cases row" *ngFor="let item of testCaseResults">
+        <div class="col-3 center-flex">Input #{{item.postion}}</div>
+        <div class="col-3 center-flex-start" *ngIf="item.status"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8o3z2bJsVFP1WiW0dWYel_XNKKtie0OPtQ_1kw62vBw&s" class="mr-1" alt="" width="15" height="15">Accepted</div>
+        <div class="col-3 center-flex-start" *ngIf="!item.status"><img width="15" height="15" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwcra0njKuPGxC_aea7M-wCigkT8zJ_zCWCXi1CjuSGQ&s" class="mr-1" alt=""> Wrong</div>
+        <div class="col-3 center-flex">{{item.time}}</div>
+        <div class="col-3 center-flex">{{item.memory}}</div>
+    </div>
+</div>

@@ -28,7 +28,14 @@ export class QuestionPreviewComponent implements OnInit {
   customInput !: string;
   output !: string;
   loading: boolean = false;
-  question:any;
+  question:any = {
+    name: '',
+    question: '',
+    tags: [],
+    inputs: [],
+    outputs: [],
+    difficulty: '',
+  };
   languageCodes = {
     "python" : 71,
     "cpp" : 14,

@@ -1,24 +1,17 @@
-
 <header class="page-header">
-    <div class="page-header__top">
-      <div class='logo'> <span class="red-tag">&lt;</span> Code OverFlow <span class="red-tag">/&gt;</span></div>
-      <div class="page-header__toggle" (click)="toggleNavbar()">☰</div>
-    </div>
-    <nav class="page-header__bottom">
-      <ul id="navigation" class="navigation">
-        <li class="navigation__item" routerLink="home">Home</li>
-        <li routerLink="code" class="navigation__item">Code</li>
-        <li routerLink="contribute" class="navigation__item">Contribute</li>
-        <li class="navigation__item">Approve</li>
-        <li class="navigation__item">Profile</li>
-        <li class="navigation__item signIn">SignOut</li>
-        <!-- <li class="navigation__item signUp">SignUp</li> -->
-      </ul>
-    </nav>
-  </header>
-  
-  
-  
-  
-  
-  
+  <div class="page-header__top">
+    <div class='logo'> <span class="red-tag">&lt;</span> Code OverFlow <span class="red-tag">/&gt;</span></div>
+    <div class="page-header__toggle" (click)="toggleNavbar()">☰</div>
+  </div>
+  <nav class="page-header__bottom">
+    <ul id="navigation" class="navigation">
+      <li routerLink="/home" class="navigation__item">Home</li>
+      <li routerLink="/home/code" class="navigation__item">Code</li>
+      <li routerLink="/home/contribute" class="navigation__item">Contribute</li>
+      <li class="navigation__item" *ngIf="user?.userType == 'ADMIN'">Approve</li>
+      <li class="navigation__item">Profile</li>
+      <li class="navigation__item signIn" (click)="logOut()">SignOut</li>
+      <!-- <li class="navigation__item signUp">SignUp</li> -->
+    </ul>
+  </nav>
+</header>

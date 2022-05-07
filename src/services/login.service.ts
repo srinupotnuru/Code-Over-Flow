@@ -19,5 +19,8 @@ export class LoginService extends BaseService {
     registerUser(data:any): Observable<any> {
         return this.post(`${this.apiUrl}/register`, data);
     }
+    verifyUser(data:any): Observable<any> {
+        return this.post(`${this.apiUrl}/verify-otp`, data);
+    }
 
 }

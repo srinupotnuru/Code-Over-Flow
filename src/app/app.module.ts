@@ -4,6 +4,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+
+import { ToastrModule } from 'ngx-toastr';
+
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
@@ -15,9 +18,8 @@ import {ReactiveFormsModule , FormsModule} from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips'
 import { CodemirrorModule } from '@ctrl/ngx-codemirror';
 import { CompilerComponent } from './components/compiler/compiler.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { environment } from '../environments/environment';
-import { LoginComponent } from './components/login/login.component';
 import { ContributeComponent } from './components/contribute/contribute.component';
 import { HomeComponent } from './components/home/home.component';
 import { MatTableModule } from '@angular/material/table';
@@ -25,18 +27,28 @@ import { QuestionPreviewComponent } from './components/home/question-preview/que
 import { AngularSplitModule } from 'angular-split';
 import { TestCaseResultsComponent } from './components/home/question-preview/test-case-results/test-case-results.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { AuthManagementComponent } from './auth-management/auth-management.component';
+import { QuestionsListComponent } from './components/questions-list/questions-list.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { OtpHandlerComponent } from './otp-handler/otp-handler.component';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import { ServiceInterceptor } from 'src/services/http.interceptor';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
     CompilerComponent,
-    LoginComponent,
     ContributeComponent,
     HomeComponent,
     QuestionPreviewComponent,
-    TestCaseResultsComponent
+    TestCaseResultsComponent,
+    AuthManagementComponent,
+    QuestionsListComponent,
+    LoginComponent,
+    RegisterComponent,
+    OtpHandlerComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,12 +68,13 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatTableModule,
     AngularSplitModule,
-    MatDialogModule
-    
-    
-    
+    MatDialogModule,
+    ToastrModule.forRoot(),
+    MatProgressBarModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: ServiceInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

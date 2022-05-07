@@ -3,24 +3,40 @@
         <div class="row">
             <mat-form-field appearance="fill" >
                 <mat-label>Problem Name</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="name">
             </mat-form-field>
 
         </div>
         <div class="row">
             <mat-form-field appearance="fill" >
                 <mat-label>Description</mat-label>
-                <textarea matInput rows="15"></textarea>
+                <textarea matInput rows="15" [(ngModel)]="question"></textarea>
             </mat-form-field>
         </div>
-        <div class="row" *ngFor="let i of numberOfTestCases">
+        <div class="row">
+            <mat-form-field appearance="fill" >
+                <mat-label>Difficulty</mat-label>
+                <mat-select [(ngModel)]="difficulty">
+                    <mat-option value="EASY">
+                        Easy
+                    </mat-option>
+                    <mat-option value="MEDIUM">
+                        Medium
+                    </mat-option>
+                    <mat-option value="HARD">
+                        Hard
+                    </mat-option>
+                  </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="row" *ngFor="let i of numberOfTestCases; let ind = index">
             <mat-form-field appearance="fill" style="width: 50%;" >
                 <mat-label>Input</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="inputs[ind]">
             </mat-form-field>
             <mat-form-field appearance="fill" style="width: 50%;">
                 <mat-label>Output</mat-label>
-                <input matInput>
+                <input matInput [(ngModel)]="outputs[ind]">
             </mat-form-field>
         </div>
         <div class="row">
@@ -45,6 +61,9 @@
             <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon" (click)="addTestCase()">
                 <mat-icon>add</mat-icon>
               </button>
+        </div>
+        <div class="row d-flex justify-content-center m-2">
+            <button mat-raised-button color="primary" (click)="contribute()">Submit</button>
         </div>
           
     </div>

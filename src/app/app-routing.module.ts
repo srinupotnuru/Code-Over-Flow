@@ -5,9 +5,13 @@ import {CompilerComponent} from '../app/components/compiler/compiler.component'
 import {LoginComponent} from '../app/components/login/login.component'
 import { ContributeComponent } from '../app/components/contribute/contribute.component'
 import { HomeComponent } from '../app/components/home/home.component'
+import { QuestionPreviewComponent } from '../app/components/home/question-preview/question-preview.component';
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
+  { path: 'home', children:[
+    { path:'', component: HomeComponent},
+    { path:'question', component: QuestionPreviewComponent},
+  ] },
   { path: 'code', component: CompilerComponent },
   { path: 'contribute', component: ContributeComponent },
   { path: 'login', component: LoginComponent },

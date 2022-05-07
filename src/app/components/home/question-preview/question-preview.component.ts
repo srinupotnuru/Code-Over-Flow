@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CompilerService } from '../../../services/compiler.service';
+import { CompilerService } from 'src/services/compiler.service';
 const defaults = {
   markdown:
     '# Heading\n\nSome **bold** and _italic_ text\nBy [Scott Cooper](https://github.com/scttcper)',
@@ -10,13 +10,12 @@ const defaults = {
 };
 const hello: string = 'world';`,
 };
-
 @Component({
-  selector: 'app-compiler',
-  templateUrl: './compiler.component.html',
-  styleUrls: ['./compiler.component.scss']
+  selector: 'app-question-preview',
+  templateUrl: './question-preview.component.html',
+  styleUrls: ['./question-preview.component.scss']
 })
-export class CompilerComponent implements OnInit {
+export class QuestionPreviewComponent implements OnInit {
 
   code: string = '';
   language: string = 'clike';
@@ -30,8 +29,6 @@ export class CompilerComponent implements OnInit {
     "cpp" : 14,
     "javascript" : 63,
     "c" : 48,
-
-
   }
   themeList = [
     { value: '3024-day', name: '3024-day' },
@@ -261,11 +258,6 @@ export class CompilerComponent implements OnInit {
     console.log(this.code);
   }
 
-  constructor(private compilerService: CompilerService) {
-   }
-
-  ngOnInit(): void {
-  }
   compile() {
     if(this.loading)
       return;
@@ -276,6 +268,8 @@ export class CompilerComponent implements OnInit {
     }
     this.loading = true;
     this.output = "";
+    console.log("come")
+    console.log(this.mode)
     let compileData :any= {
       source_code : btoa(this.code)
     };
@@ -312,4 +306,9 @@ export class CompilerComponent implements OnInit {
     })
     
   }
+  constructor(private compilerService:CompilerService) { }
+
+  ngOnInit(): void {
+  }
+
 }

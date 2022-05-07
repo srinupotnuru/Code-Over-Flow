@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
+import { QuestionService } from '../../../services/question.service';
 export interface Tag {
   name: string;
 }
@@ -11,13 +12,26 @@ export interface Tag {
 })
 
 export class ContributeComponent implements OnInit {
-
+  name:string = "";
+  question:string = "";
+  difficulty:string = "";
   numberOfTestCases: any=[];
-
+  inputs: any = [];
+  outputs: any = [];
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   tags: Tag[] = [];
-
+  
+  quillBasicEditorConfig = {
+    toolbar :  {
+      container: [
+        ['bold', 'italic', 'underline', 'strike'],
+        [{ header: 1 }, { header: 2 }],
+        [{ list: 'ordered' }, { list: 'bullet' }],
+        [{ align: [] }],
+      ]
+    }
+  }
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
 
@@ -37,14 +51,29 @@ export class ContributeComponent implements OnInit {
       this.tags.splice(index, 1);
     }
   }
-  constructor() { }
+  constructor(private questionService:QuestionService) { }
 
   ngOnInit(): void {
   }
 
   addTestCase(){
     this.numberOfTestCases.push({});
+    this.inputs.push("");
+    this.outputs.push("");
 
+  }
+
+  contribute()
+  {
+    let problem:any={};
+    problem.question =  this.question;
+    problem.name = this.name;
+    problem.tags = this.tags.map(tag=>tag.name);
+    problem.inputs = this.inputs;
+    problem.outputs = this.outputs;
+    problem.difficulty = this.difficulty;
+    console.log(problem); 
+    this.questionService.createQuestion(problem).subscribe(data=>{})
   }
 
 }

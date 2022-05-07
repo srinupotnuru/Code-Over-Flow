@@ -1,0 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+.compilerWrapper {
+  padding: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #0e1626;
+  .codeMirror {
+    height: 100%;
+  }
+}
+.compiler {
+  width: 100%;
+}
+.console {
+  margin: 10px;
+  color: #d6deeb;
+  textarea {
+    width: 100%;
+    background-color: #1c2333;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+  }
+  h2 {
+    color: #d6deeb;
+  }
+}
+.editor-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+$glass: rgba(255, 255, 255, 0.2);
+$glass-icon: rgba(255, 255, 255, 0.3);
+$gradient: linear-gradient(35deg, red, purple);
+$option: #0e1626;
+
+/* <select> styles */
+select {
+  /* Reset */
+  appearance: none;
+  border: 0;
+  outline: 0;
+  margin-bottom: 10px;
+  font: inherit;
+  /* Personalize */
+  width: 10em;
+  height: 3em;
+  padding: 0 4em 0 1em;
+  background: url(https://upload.wikimedia.org/wikipedia/commons/9/9d/Caret_down_font_awesome_whitevariation.svg)
+      no-repeat right 0.8em center / 1.4em,
+    linear-gradient(to left, $glass-icon 3em, $glass 3em);
+  color: white;
+  border-radius: 0.25em;
+  box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  /* <option> colors */
+  option {
+    color: inherit;
+    background-color: $option;
+    font-family: "Roboto", sans-serif;
+  }
+  /* Remove focus outline */
+  &:focus {
+    outline: none;
+  }
+  /* Remove IE arrow */
+  &::-ms-expand {
+    display: none;
+  }
+}
+
+.run-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  background-color: green;
+  width: 6em;
+  color: #6cd97e;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+::ng-deep .CodeMirror {
+  height: 400px;
+}
+
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 30px;
+  height: 30px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

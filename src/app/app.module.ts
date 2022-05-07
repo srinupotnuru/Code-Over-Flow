@@ -20,6 +20,9 @@ import { environment } from '../environments/environment';
 import { LoginComponent } from './components/login/login.component';
 import { ContributeComponent } from './components/contribute/contribute.component';
 import { HomeComponent } from './components/home/home.component';
+import { MatTableModule } from '@angular/material/table';
+import { QuestionPreviewComponent } from './components/home/question-preview/question-preview.component';
+import { AngularSplitModule } from 'angular-split';
 
 
 @NgModule({
@@ -29,7 +32,8 @@ import { HomeComponent } from './components/home/home.component';
     CompilerComponent,
     LoginComponent,
     ContributeComponent,
-    HomeComponent
+    HomeComponent,
+    QuestionPreviewComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +50,9 @@ import { HomeComponent } from './components/home/home.component';
     HttpClientModule,
     MatFormFieldModule,
     MatInputModule,
-    MatChipsModule
+    MatChipsModule,
+    MatTableModule,
+    AngularSplitModule,
     
     
   ],

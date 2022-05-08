@@ -13,7 +13,7 @@
       <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element" style="cursor: pointer;" (click)="openPreview(element._id)"> <a>{{element.name}}</a> </td>
+        <td mat-cell *matCellDef="let element" style="cursor: pointer;" (click)="openPreview(element._id)"> <span style="color: rgb(28, 28, 165);">{{element.name}}</span> </td>
       </ng-container>
     
       <!-- Weight Column -->

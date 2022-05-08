@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import { QuestionService } from '../../../services/question.service';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { ToastrService } from 'ngx-toastr';
 export interface Tag {
   name: string;
 }
@@ -12,6 +14,36 @@ export interface Tag {
 })
 
 export class ContributeComponent implements OnInit {
+
+  config: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '20rem',
+    minHeight: '5rem',
+    placeholder: 'Enter text here...',
+    translate: 'no',
+    defaultParagraphSeparator: 'p',
+    defaultFontName: 'Arial',
+    toolbarHiddenButtons: [
+      ],
+    customClasses: [
+      {
+        name: "quote",
+        class: "quote",
+      },
+      {
+        name: 'redText',
+        class: 'redText'
+      },
+      {
+        name: "titleText",
+        class: "titleText",
+        tag: "h1",
+      },
+    ]
+  };
+
+
   name:string = "";
   question:string = "";
   difficulty:string = "";
@@ -51,7 +83,7 @@ export class ContributeComponent implements OnInit {
       this.tags.splice(index, 1);
     }
   }
-  constructor(private questionService:QuestionService) { }
+  constructor(private questionService:QuestionService, private toaster:ToastrService) { }
 
   ngOnInit(): void {
   }
@@ -63,8 +95,19 @@ export class ContributeComponent implements OnInit {
 
   }
 
+  resetForm()
+  {
+    //reload current window
+    window.location.reload();
+    // this.numberOfTestCases = 0;
+  }
   contribute()
   {
+    if(this.name.length == 0 || this.question.length == 0 || this.difficulty.length == 0 || this.tags.length == 0 || this.numberOfTestCases.length == 0)
+    {
+      this.toaster.error("Please fill all the data");
+      return;
+    } 
     let problem:any={};
     problem.question =  this.question;
     problem.name = this.name;
@@ -72,8 +115,17 @@ export class ContributeComponent implements OnInit {
     problem.inputs = this.inputs;
     problem.outputs = this.outputs;
     problem.difficulty = this.difficulty;
-    console.log(problem); 
-    this.questionService.createQuestion(problem).subscribe(data=>{})
+    this.questionService.createQuestion(problem).subscribe(data=>{
+      if(data.success)
+      {
+        this.toaster.success('Question added successfully');
+        this.resetForm();
+      }
+      else{
+        this.toaster.error("Error in creating question");
+        this.resetForm();
+      }
+    })
   }
 
 }

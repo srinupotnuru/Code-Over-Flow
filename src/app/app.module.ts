@@ -34,6 +34,8 @@ import { RegisterComponent } from './register/register.component';
 import { OtpHandlerComponent } from './otp-handler/otp-handler.component';
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ServiceInterceptor } from 'src/services/http.interceptor';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { ServiceInterceptor } from 'src/services/http.interceptor';
     LoginComponent,
     RegisterComponent,
     OtpHandlerComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { ServiceInterceptor } from 'src/services/http.interceptor';
     AngularSplitModule,
     MatDialogModule,
     ToastrModule.forRoot(),
-    MatProgressBarModule
+    MatProgressBarModule,
+    AngularEditorModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: ServiceInterceptor, multi: true

@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "@ctrl/ngx-codemirror": "^5.1.1",
+    "@kolkov/angular-editor": "^2.0.0",
     "angular-split": "^13.2.0",
     "codemirror": "^5.65.2",
     "ngx-cookie-service": "^13.1.2",

@@ -44,7 +44,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
         });
       }
       else {
-        this.toastService.error(result.error);
+        this.toastService.error(result.message);
       }
     });
   }

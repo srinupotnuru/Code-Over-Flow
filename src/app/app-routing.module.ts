@@ -10,14 +10,18 @@ import { QuestionsListComponent } from './components/questions-list/questions-li
 import { RegisterComponent } from './register/register.component';
 import { OtpHandlerComponent } from './otp-handler/otp-handler.component';
 import { AuthGuard } from './auth.guard';
+import { ProfileComponent } from '../app/components/profile/profile.component';
 const routes: Routes = [
   { path: '', component: AuthManagementComponent },
-  { path: 'home', canActivate: [AuthGuard], component: HomeComponent, children:[
-    { path:'', component: QuestionsListComponent},
-    { path:'question', component: QuestionPreviewComponent},
-    { path: 'code', component: CompilerComponent },
-    { path: 'contribute', component: ContributeComponent },
-  ] },
+  { path: 'home', canActivate: [AuthGuard], component: HomeComponent, children:
+    [
+      { path:'', component: QuestionsListComponent},
+      { path:'question', component: QuestionPreviewComponent},
+      { path: 'code', component: CompilerComponent },
+      { path: 'contribute', component: ContributeComponent },
+      { path: 'profile', component: ProfileComponent}
+    ] 
+  },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'verify', component: OtpHandlerComponent }

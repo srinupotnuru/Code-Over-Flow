@@ -14,11 +14,11 @@ export class ServiceInterceptor implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler):
     Observable<HttpEvent<any>> {
-    LoadingService.show();
-    return next.handle(req).pipe(
-        finalize(()=>{
-            LoadingService.hide();
-        })
-    );
+      LoadingService.show();
+      return next.handle(req).pipe(
+          finalize(()=>{
+              LoadingService.hide();
+          })
+      );
   }
 }

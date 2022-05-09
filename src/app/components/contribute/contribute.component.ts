@@ -108,6 +108,7 @@ export class ContributeComponent implements OnInit {
       this.toaster.error("Please fill all the data");
       return;
     } 
+    const user = JSON.parse(sessionStorage.getItem('user') as string);
     let problem:any={};
     problem.question =  this.question;
     problem.name = this.name;
@@ -115,6 +116,7 @@ export class ContributeComponent implements OnInit {
     problem.inputs = this.inputs;
     problem.outputs = this.outputs;
     problem.difficulty = this.difficulty;
+    problem.user = user;
     this.questionService.createQuestion(problem).subscribe(data=>{
       if(data.success)
       {

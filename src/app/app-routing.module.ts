@@ -11,6 +11,10 @@ import { RegisterComponent } from './register/register.component';
 import { OtpHandlerComponent } from './otp-handler/otp-handler.component';
 import { AuthGuard } from './auth.guard';
 import { ProfileComponent } from '../app/components/profile/profile.component';
+import { BlogsComponent } from '../app/components/blogs/blogs.component';
+import { CreateBlogComponent } from '../app/components/create-blog/create-blog.component';
+import { BlogPreviewComponent } from '../app/components/blogs/blog-preview/blog-preview.component';
+import { MyBlogsComponent } from '../app/components/blogs/my-blogs/my-blogs.component';
 const routes: Routes = [
   { path: '', component: AuthManagementComponent },
   { path: 'home', canActivate: [AuthGuard], component: HomeComponent, children:
@@ -19,7 +23,11 @@ const routes: Routes = [
       { path:'question', component: QuestionPreviewComponent},
       { path: 'code', component: CompilerComponent },
       { path: 'contribute', component: ContributeComponent },
-      { path: 'profile', component: ProfileComponent}
+      { path: 'profile', component: ProfileComponent},
+      { path: 'blogs', component: BlogsComponent},
+      { path: 'create-blog', component: CreateBlogComponent},
+      { path: 'blog-preview', component: BlogPreviewComponent},
+      { path: 'my-blogs', component: MyBlogsComponent}
     ] 
   },
   { path: 'login', component: LoginComponent },

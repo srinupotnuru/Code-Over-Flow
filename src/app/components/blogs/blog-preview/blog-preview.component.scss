@@ -1,0 +1,26 @@
+.blog-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    padding-left:200px;
+    padding-right: 200px;
+   
+}
+
+.blog-name{
+    border-bottom: 2px solid yellow;
+    padding-bottom: 0;
+    width: max-content;
+    margin-bottom: 30px;
+}
+.contributer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+
+}
+.contributer-info{
+    display: flex;
+    flex-direction: column;
+}

@@ -1,0 +1,16 @@
+
+
+<div class="blogs container-fluid">
+    <div class="blog" *ngFor="let item of blogs;let i = index" (click)="gotoBlog(item._id)">
+        <div class="blog-nmbr">
+            {{i+1}}
+        </div>
+        <div class="blog-body">
+            <div class="header">{{item.name}}</div>
+            <div class="details">
+                <div class="contributedBy"> <span style="color: blue;"> <img src="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2020/12/Customizable-SVG-Avatar-Generator-In-JavaScript-Avataaars.js.png?fit=438%2C408&ssl=1" style="border-radius: 30px;" width="20px" height="20px" alt=""> </span> {{item.contributedBy.firstName}} {{item.contributedBy.lastName}}</div>
+                <div class="time">{{item.createdAt | date}}  <span style="color: blue;">{{item.timeFromNow}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>

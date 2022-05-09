@@ -1,0 +1,16 @@
+<div class="blog-wrapper container">
+    <div class="contributer">
+        <div class="avatar mr-2">
+            <img width="40px" height="40px" style="border-radius: 30px;" src="https://i0.wp.com/www.cssscript.com/wp-content/uploads/2020/12/Customizable-SVG-Avatar-Generator-In-JavaScript-Avataaars.js.png?fit=438%2C408&ssl=1" alt="">
+        </div>
+        <div class="contributer-info">
+            <h3 class="mb-0" style="font-weight: bold;">Srinu Potnuru</h3>
+            <p>{{blog.createdAt | date}}</p>
+        </div>
+    </div>
+    <div class="blog-name">
+        <h1 style="font-weight: bold;">{{blog.name}}</h1>
+    </div>
+    <div class="blog-content mt-0" [innerHtml]="blog.blog">
+    </div>
+</div>

@@ -36,6 +36,10 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ServiceInterceptor } from 'src/services/http.interceptor';
 import { AngularEditorModule } from '@kolkov/angular-editor';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BlogsComponent } from './components/blogs/blogs.component';
+import { CreateBlogComponent } from './components/create-blog/create-blog.component';
+import { BlogPreviewComponent } from './components/blogs/blog-preview/blog-preview.component';
+import { MyBlogsComponent } from './components/blogs/my-blogs/my-blogs.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegisterComponent,
     OtpHandlerComponent,
     ProfileComponent,
+    BlogsComponent,
+    CreateBlogComponent,
+    BlogPreviewComponent,
+    MyBlogsComponent,
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,11 @@
       <li routerLink="/home" class="navigation__item">Home</li>
       <li routerLink="/home/code" class="navigation__item">Code</li>
       <li routerLink="/home/contribute" class="navigation__item">Contribute</li>
+      <li routerLink="/home/blogs" class="navigation__item">Blogs</li>
+      <li routerLink="/home/my-blogs" class="navigation__item">My Blogs</li>
+      <li routerLink="/home/create-blog" class="navigation__item">Create Blog</li>
       <li class="navigation__item" *ngIf="user?.userType == 'ADMIN'">Approve</li>
-      <li routerLink="/home/profile" class="navigation__item">Profile</li>
+      <!-- <li routerLink="/home/profile" class="navigation__item">Profile</li> -->
       <li class="navigation__item signIn" (click)="logOut()">SignOut</li>
       <!-- <li class="navigation__item signUp">SignUp</li> -->
     </ul>

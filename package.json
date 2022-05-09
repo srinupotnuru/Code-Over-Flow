@@ -24,6 +24,7 @@
     "@kolkov/angular-editor": "^2.0.0",
     "angular-split": "^13.2.0",
     "codemirror": "^5.65.2",
+    "moment": "^2.29.3",
     "ngx-cookie-service": "^13.1.2",
     "ngx-quill": "^16.2.0",
     "ngx-toastr": "^14.3.0",

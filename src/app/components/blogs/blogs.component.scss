@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+
+.container-fluid{
+}
+.blogs{
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .blog{
+        .blog-nmbr{
+            font-size: 2em;
+            font-weight: bold;   
+            color: rgba(230, 230, 230, 1);
+            margin-right: 10px;
+        }
+        padding: 10px;
+        background-color: #0E1525;
+        color: white;
+        border-radius: 5px;
+        display: flex;
+        flex-direction: row;
+        cursor: pointer;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+        margin: 10px;
+        width: 400px;
+        .blog-body{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .header{
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+        .details{
+            margin-top: 10px;
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+            justify-content: space-between;
+            .contributedBy .time{
+                cursor: pointer;
+                font-size: 0.6em;
+            }
+        }
+
+    }
+}

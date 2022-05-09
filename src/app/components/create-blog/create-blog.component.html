@@ -1,0 +1,23 @@
+<div class="blog-wrapper container p-3">
+    <div class="form-wrapper">
+        <div class="row">
+            <mat-form-field appearance="fill" >
+                <mat-label>Problem Name</mat-label>
+                <input matInput [(ngModel)]="name">
+            </mat-form-field>
+
+        </div>
+        <div class="row m-2" style="background-color:white">
+            <!-- <mat-form-field appearance="fill" >
+                <mat-label>Description</mat-label>
+                <textarea matInput rows="15" [(ngModel)]="question"></textarea>
+            </mat-form-field> -->
+            <angular-editor [placeholder]="'Write your question here...'" [(ngModel)]="blog"  [config]="config"></angular-editor>
+        </div>
+          
+        <div class="row d-flex justify-content-center m-2">
+            <button mat-raised-button color="primary" (click)="postBlog()">Submit</button>
+        </div>
+
+    </div>
+</div>

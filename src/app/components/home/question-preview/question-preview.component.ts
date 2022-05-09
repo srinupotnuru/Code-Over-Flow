@@ -233,7 +233,6 @@ export class QuestionPreviewComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
     });
   }
 }

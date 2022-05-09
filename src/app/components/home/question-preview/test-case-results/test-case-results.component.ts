@@ -21,7 +21,6 @@ export class TestCaseResultsComponent implements OnInit {
     private questionService: QuestionService
     ) { 
       this.questionService.getTestCaseResults(this.data.id,this.data.compileData).subscribe((res:any)=>{
-        console.log(res.data,"data")
         let ind=0;
         for(let item of res.data)
         {

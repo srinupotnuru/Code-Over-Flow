@@ -125,21 +125,17 @@ export class CompilerComponent implements OnInit {
       ...this.codeMirrorOptions,
       mode: this.mode,
     };
-    console.log(this.codeMirrorOptions)
   }
   changeTheme():void{
     this.codeMirrorOptions = {
       ...this.codeMirrorOptions,
       theme: this.theme,
     };
-    console.log(this.codeMirrorOptions)
   }
   handleChange($event: Event): void {
-    console.log('ngModelChange', $event);
   }
 
   setEditorContent(event:any) {
-    console.log(this.code);
   }
 
   constructor(private compilerService: CompilerService) {
@@ -182,7 +178,6 @@ export class CompilerComponent implements OnInit {
    } 
 
     this.compilerService.compile(compileData).subscribe(res=>{
-      console.log(res)
       this.loading = false;
       if(res.data.stdout)
         this.output = atob(res.data.stdout);

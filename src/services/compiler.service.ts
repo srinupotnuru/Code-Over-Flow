@@ -13,12 +13,10 @@ export class CompilerService extends BaseService {
     }
     apiUrl = environment.apiUrl + '/compile/compile';
     compile(dataa :any):Observable<any>{
-        console.log(dataa);
         let data = {
             "language_id":71,
             "source_code": btoa("print('Hello World')")
         }
-        console.log(data)
         return this.post(this.apiUrl,dataa);
     }
 
